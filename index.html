@@ -3,58 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Byltmore | Development & Construction</title>
+    <title>Byltmore | Premium Development & Construction</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Oswald:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        h1, h2 { font-family: 'Oswald', sans-serif; letter-spacing: 0.1em; }
-        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=2070'); background-size: cover; background-position: center; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .font-heading { font-family: 'Oswald', sans-serif; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .nav-glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-white text-slate-900">
 
-    <nav class="flex justify-between items-center p-6 bg-white shadow-sm">
-        <div class="text-2xl font-bold tracking-tighter uppercase">Byltmore</div>
-        <div class="space-x-8 hidden md:block uppercase text-sm tracking-widest font-medium">
-            <a href="#" class="hover:text-blue-700 transition">Development</a>
-            <a href="#" class="hover:text-blue-700 transition">Construction</a>
-            <a href="#" class="border-2 border-slate-900 px-4 py-2 hover:bg-slate-900 hover:text-white transition">Contact</a>
+    <nav class="fixed w-full z-50 nav-glass border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="text-2xl font-bold font-heading tracking-tighter uppercase text-blue-900">BYLTMORE</div>
+            <div class="hidden md:flex space-x-10 text-xs font-bold uppercase tracking-widest text-slate-600">
+                <a href="#about" class="hover:text-blue-600 transition">About</a>
+                <a href="#services" class="hover:text-blue-600 transition">Services</a>
+                <a href="#projects" class="hover:text-blue-600 transition">Portfolio</a>
+                <a href="#contact" class="bg-blue-900 text-white px-5 py-2 hover:bg-blue-700 transition">Get a Quote</a>
+            </div>
         </div>
     </nav>
 
-    <header class="hero-gradient h-[80vh] flex items-center justify-center text-center text-white px-4">
-        <div>
-            <h1 class="text-5xl md:text-7xl font-bold uppercase mb-4">Building Excellence</h1>
-            <p class="text-xl md:text-2xl font-light max-w-2xl mx-auto mb-8 text-slate-300">
-                Premium Development & Strategic Construction Management.
-            </p>
-            <div class="h-1 w-24 bg-blue-600 mx-auto"></div>
+    <section class="relative h-screen flex items-center bg-slate-900 overflow-hidden">
+        <div class="absolute inset-0 opacity-40">
+            <img src="https://images.unsplash.com/photo-1541913057-2599e9bcac2a?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover" alt="Construction background">
         </div>
-    </header>
-
-    <section class="py-20 px-6 max-w-6xl mx-auto">
-        <div class="grid md:grid-cols-3 gap-12 text-center">
-            <div>
-                <h3 class="text-xl font-bold mb-3 uppercase">Strategic Planning</h3>
-                <p class="text-slate-600">From site acquisition to feasibility studies, we lay the groundwork for success.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-3 uppercase">Quality Construction</h3>
-                <p class="text-slate-600">Uncompromising standards in craftsmanship and project management.</p>
-            </div>
-            <div>
-                <h3 class="text-xl font-bold mb-3 uppercase">Modern Design</h3>
-                <p class="text-slate-600">Architectural integrity paired with functional innovation.</p>
+        <div class="relative max-w-7xl mx-auto px-6 pt-20">
+            <h2 class="text-blue-500 font-bold tracking-[0.3em] uppercase mb-4">Established 2026</h2>
+            <h1 class="text-6xl md:text-8xl font-heading text-white leading-none mb-6">WE BUILD<br><span class="text-blue-600">LEGACIES.</span></h1>
+            <p class="max-w-xl text-slate-300 text-lg mb-10 leading-relaxed">Byltmore specializes in high-stakes commercial development and precision residential construction. We turn blueprints into landmarks.</p>
+            <div class="flex space-x-4">
+                <a href="#projects" class="px-8 py-4 bg-blue-700 text-white font-bold uppercase tracking-widest text-sm hover:bg-blue-800 transition">View Portfolio</a>
+                <a href="#about" class="px-8 py-4 border border-white text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-slate-900 transition">Our Process</a>
             </div>
         </div>
     </section>
 
-    <footer class="bg-slate-900 text-white py-12 px-6 text-center">
-        <p class="opacity-50 mb-4">&copy; 2026 BYLTMORE Development & Construction</p>
-        <p class="text-sm tracking-widest uppercase">byltmore.com</p>
+    <section id="services" class="py-24 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 reveal">
+                <div>
+                    <h2 class="text-blue-600 font-bold tracking-widest uppercase mb-2">Our Expertise</h2>
+                    <h3 class="text-4xl font-heading uppercase">Disciplined Development</h3>
+                </div>
+                <p class="max-w-md text-slate-500 mt-4 md:mt-0">We manage the entire lifecycle of a project, from site selection and zoning to the final structural walkthrough.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-1 px-1 bg-slate-200">
+                <div class="bg-white p-12 reveal">
+                    <div class="w-12 h-1 bg-blue-600 mb-6"></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase font-heading">Pre-Construction</h4>
+                    <ul class="text-slate-500 space-y-2 text-sm">
+                        <li>• Feasibility Studies</li>
+                        <li>• Cost Estimation</li>
+                        <li>• Site Analysis</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-12 reveal">
+                    <div class="w-12 h-1 bg-blue-600 mb-6"></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase font-heading">General Contracting</h4>
+                    <ul class="text-slate-500 space-y-2 text-sm">
+                        <li>• On-site Management</li>
+                        <li>• Safety Compliance</li>
+                        <li>• Subcontractor Vetting</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-12 reveal">
+                    <div class="w-12 h-1 bg-blue-600 mb-6"></div>
+                    <h4 class="text-xl font-bold mb-4 uppercase font-heading">Civil Engineering</h4>
+                    <ul class="text-slate-500 space-y-2 text-sm">
+                        <li>• Infrastructure Design</li>
+                        <li>• Grading & Drainage</li>
+                        <li>• Urban Planning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 bg-slate-900 text-white">
+        <div class="max-w-4xl mx-auto text-center reveal">
+            <h2 class="text-4xl font-heading uppercase mb-8">Start Your Next Project</h2>
+            <form class="grid md:grid-cols-2 gap-4">
+                <input type="text" placeholder="Full Name" class="bg-slate-800 border-none p-4 focus:ring-2 focus:ring-blue-600 outline-none">
+                <input type="email" placeholder="Email Address" class="bg-slate-800 border-none p-4 focus:ring-2 focus:ring-blue-600 outline-none">
+                <textarea placeholder="Project Brief" class="md:col-span-2 bg-slate-800 border-none p-4 h-32 focus:ring-2 focus:ring-blue-600 outline-none"></textarea>
+                <button class="md:col-span-2 bg-blue-600 py-4 font-bold uppercase tracking-widest hover:bg-blue-500 transition">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 text-center text-slate-500 text-xs border-t border-slate-800 bg-slate-900 uppercase tracking-widest">
+        &copy; 2026 Byltmore Development & Construction | byltmore.com
     </footer>
 
+    <script>
+        // Simple Scroll Animation Logic
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    </script>
 </body>
 </html>
-
