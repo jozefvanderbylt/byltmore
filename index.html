@@ -3,207 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Byltmore</title>
+    <title>Byltmore | Development & Construction Management</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Outfit:wght@300;400;600;900&display=swap" rel="stylesheet">
     <style>
-        :root { --accent: #2563eb; }
-        body { font-family: 'Outfit', sans-serif; background-color: #05070a; color: #ffffff; }
-        h1, h2, h3, .nav-link { font-family: 'Space Grotesk', sans-serif; }
-        .glass { background: rgba(5, 7, 10, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .project-card:hover .project-overlay { opacity: 1; transform: translateY(0); }
-        .gradient-text { background: linear-gradient(90deg, #ffffff, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        body { font-family: 'Outfit', sans-serif; background-color: #05070a; color: #ffffff; overflow-x: hidden; }
+        .font-heading { font-family: 'Space Grotesk', sans-serif; }
+        
+        /* High-End Parallax Effect */
+        .parallax-bg {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Industrial Build Image - Fixed placeholder */
+        .hero-img { background-image: linear-gradient(rgba(5,7,10,0.6), rgba(5,7,10,0.8)), url('https://images.pexels.com/photos/159490/building-construction-site-building-site-builder-159490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); }
+        .industrial-img { background-image: url('https://images.pexels.com/photos/2209529/pexels-photo-2209529.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); }
+        .estates-img { background-image: url('https://images.pexels.com/photos/323705/pexels-photo-323705.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); }
+        .meridian-img { background-image: url('https://images.pexels.com/photos/1106476/pexels-photo-1106476.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2'); }
+
+        .glass { background: rgba(5, 7, 10, 0.85); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <nav class="fixed w-full z-[100] glass px-6 py-4" x-data="{ mobileMenu: false }">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-blue-600 flex items-center justify-center font-bold text-xl">B</div>
-                <span class="text-2xl font-bold tracking-tighter uppercase">Byltmore</span>
+    <nav class="fixed w-full z-[100] glass px-8 py-5">
+        <div class="max-w-[1400px] mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-1 bg-blue-600"></div>
+                <span class="text-2xl font-black font-heading tracking-tighter uppercase">Byltmore</span>
             </div>
-            
-            <div class="hidden lg:flex items-center gap-10 text-[11px] font-bold uppercase tracking-[0.2em] text-gray-400">
-                <a href="#about" class="hover:text-blue-500 transition nav-link">Overview</a>
-                <a href="#projects" class="hover:text-blue-500 transition nav-link">Portfolio</a>
-                <a href="#expertise" class="hover:text-blue-500 transition nav-link">Expertise</a>
-                <a href="#process" class="hover:text-blue-500 transition nav-link">The Build</a>
-                <a href="#contact" class="px-6 py-3 border border-white/20 hover:bg-white hover:text-black transition">Inquire</a>
+            <div class="hidden lg:flex items-center gap-12 text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400">
+                <a href="#projects" class="hover:text-white transition">Projects</a>
+                <a href="#process" class="hover:text-white transition">Methodology</a>
+                <a href="#contact" class="px-8 py-3 bg-blue-600 text-white hover:bg-blue-700 transition tracking-widest">Contact HQ</a>
             </div>
-
-            <button @click="mobileMenu = !mobileMenu" class="lg:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-            </button>
-        </div>
-        
-        <div x-show="mobileMenu" class="absolute top-full left-0 w-full bg-[#05070a] border-b border-white/10 p-6 flex flex-col gap-4 lg:hidden">
-            <a href="#projects" @click="mobileMenu = false" class="text-xl font-bold">Portfolio</a>
-            <a href="#expertise" @click="mobileMenu = false" class="text-xl font-bold">Expertise</a>
-            <a href="#contact" @click="mobileMenu = false" class="text-xl font-bold text-blue-500">Contact Us</a>
         </div>
     </nav>
 
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/20 to-[#05070a] z-10"></div>
-            <img src="https://images.unsplash.com/photo-1503387762-592dea58ea2e?auto=format&fit=crop&q=80&w=2500" class="w-full h-full object-cover scale-105 transition duration-[10s] hover:scale-100" alt="Architecture">
-        </div>
-        
+    <section class="relative h-screen flex items-center justify-center parallax-bg hero-img">
         <div class="relative z-20 text-center px-6">
-            <h2 class="text-blue-500 font-bold tracking-[0.5em] uppercase text-xs mb-6">Development • Construction • Management</h2>
-            <h1 class="text-6xl md:text-9xl font-black tracking-tight mb-8 leading-[0.9] gradient-text">
-                DEFINING THE<br>SKYLINE.
+            <h2 class="text-blue-500 font-bold tracking-[0.6em] uppercase text-[10px] mb-8 reveal">Global Infrastructure • Commercial Elite</h2>
+            <h1 class="text-6xl md:text-9xl font-black tracking-tighter mb-10 leading-[0.85] font-heading reveal">
+                DEFINING THE<br><span class="text-transparent" style="-webkit-text-stroke: 1px white;">SKYLINE.</span>
             </h1>
-            <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                <a href="#projects" class="group relative px-10 py-5 bg-white text-black font-bold uppercase text-xs tracking-widest overflow-hidden transition-all">
-                    <span class="relative z-10 italic">View 2026 Portfolio</span>
-                    <div class="absolute inset-0 bg-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
-                </a>
-            </div>
-        </div>
-
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-30 text-xs tracking-tighter uppercase font-bold">
-            Scroll To Explore
-        </div>
-    </section>
-
-    <section class="bg-blue-600 py-12 px-6">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div class="text-center">
-                <div class="text-4xl font-bold font-heading">$240M+</div>
-                <div class="text-[10px] uppercase tracking-widest opacity-80 mt-2 font-bold">Assets Under Dev</div>
-            </div>
-            <div class="text-center border-l border-white/20">
-                <div class="text-4xl font-bold font-heading">1.2M</div>
-                <div class="text-[10px] uppercase tracking-widest opacity-80 mt-2 font-bold">Sq Ft Built</div>
-            </div>
-            <div class="text-center border-l border-white/20">
-                <div class="text-4xl font-bold font-heading">100%</div>
-                <div class="text-[10px] uppercase tracking-widest opacity-80 mt-2 font-bold">Safety Rating</div>
-            </div>
-            <div class="text-center border-l border-white/20">
-                <div class="text-4xl font-bold font-heading">14</div>
-                <div class="text-[10px] uppercase tracking-widest opacity-80 mt-2 font-bold">Active Sites</div>
+            <div class="reveal">
+                <a href="#projects" class="inline-block border-b-2 border-blue-600 pb-2 text-sm font-bold tracking-[0.2em] uppercase hover:text-blue-500 transition">Explore Case Studies</a>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-32 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
-                <div>
-                    <h2 class="text-blue-500 font-bold tracking-widest uppercase text-xs mb-4">// SELECT WORKS</h2>
-                    <h3 class="text-5xl font-bold uppercase leading-none">Featured<br>Developments</h3>
+    <section id="projects" class="py-32 bg-[#05070a]">
+        <div class="max-w-[1400px] mx-auto px-8">
+            <div class="grid lg:grid-cols-12 gap-16 items-start">
+                <div class="lg:col-span-4 sticky top-32">
+                    <h2 class="text-4xl font-black font-heading uppercase leading-none mb-6">Built to<br>Endure.</h2>
+                    <p class="text-gray-500 text-lg leading-relaxed mb-8">Our portfolio spans from heavy industrial logistics hubs to ultra-luxury residential towers.</p>
                 </div>
-                <p class="max-w-md text-gray-500 text-sm mt-6 md:mt-0 italic leading-relaxed">
-                    A collection of high-density residential and premium commercial spaces delivered across the tri-state area.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="project-card relative aspect-[4/5] overflow-hidden group cursor-pointer bg-gray-900">
-                    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Tower One">
-                    <div class="project-overlay absolute inset-0 bg-blue-900/90 p-10 flex flex-col justify-end opacity-0 transform translate-y-4 transition-all duration-500">
-                        <span class="text-xs font-bold uppercase tracking-widest mb-2">Commercial Office</span>
-                        <h4 class="text-3xl font-bold uppercase mb-4">The Meridian Center</h4>
-                        <div class="h-1 w-12 bg-white"></div>
-                    </div>
-                </div>
-
-                <div class="project-card relative aspect-[4/5] overflow-hidden group cursor-pointer bg-gray-900">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Residences">
-                    <div class="project-overlay absolute inset-0 bg-blue-900/90 p-10 flex flex-col justify-end opacity-0 transform translate-y-4 transition-all duration-500">
-                        <span class="text-xs font-bold uppercase tracking-widest mb-2">Luxury Residential</span>
-                        <h4 class="text-3xl font-bold uppercase mb-4">Byltmore Estates</h4>
-                        <div class="h-1 w-12 bg-white"></div>
-                    </div>
-                </div>
-
-                <div class="project-card relative aspect-[4/5] overflow-hidden group cursor-pointer bg-gray-900">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&q=80&w=1000" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition duration-700" alt="Infrastructure">
-                    <div class="project-overlay absolute inset-0 bg-blue-900/90 p-10 flex flex-col justify-end opacity-0 transform translate-y-4 transition-all duration-500">
-                        <span class="text-xs font-bold uppercase tracking-widest mb-2">Industrial Build</span>
-                        <h4 class="text-3xl font-bold uppercase mb-4">North Port Logistics</h4>
-                        <div class="h-1 w-12 bg-white"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="process" class="py-32 px-6 bg-[#0a0d12]">
-        <div class="max-w-5xl mx-auto">
-            <h2 class="text-center text-blue-500 font-bold tracking-widest uppercase text-xs mb-20">Our Strategic Workflow</h2>
-            
-            <div class="space-y-24 relative">
-                <div class="absolute left-1/2 top-0 bottom-0 w-px bg-white/5 hidden md:block"></div>
                 
-                <div class="relative flex flex-col md:flex-row items-center gap-12 group">
-                    <div class="md:w-1/2 text-right hidden md:block">
-                        <span class="text-8xl font-black text-white/5 group-hover:text-blue-600 transition duration-500">01</span>
+                <div class="lg:col-span-8 grid md:grid-cols-2 gap-6">
+                    <div class="group relative overflow-hidden bg-gray-900 aspect-[3/4] reveal">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 meridian-img"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent p-8 flex flex-col justify-end">
+                            <h4 class="text-2xl font-bold font-heading">The Meridian</h4>
+                            <p class="text-blue-500 text-xs font-bold uppercase tracking-widest">Office Development</p>
+                        </div>
                     </div>
-                    <div class="md:w-1/2">
-                        <h4 class="text-2xl font-bold uppercase mb-4">Ideation & Analysis</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">We perform deep-market analysis and zoning reviews to ensure maximum land utilization and project feasibility before breaking ground.</p>
-                    </div>
-                </div>
-
-                <div class="relative flex flex-col md:flex-row-reverse items-center gap-12 group">
-                    <div class="md:w-1/2 text-left hidden md:block">
-                        <span class="text-8xl font-black text-white/5 group-hover:text-blue-600 transition duration-500">02</span>
-                    </div>
-                    <div class="md:w-1/2 text-right">
-                        <h4 class="text-2xl font-bold uppercase mb-4">Architectural Integrity</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">Partnering with top-tier designers, we balance aesthetic boldness with structural efficiency to create long-term value.</p>
-                    </div>
-                </div>
-
-                <div class="relative flex flex-col md:flex-row items-center gap-12 group">
-                    <div class="md:w-1/2 text-right hidden md:block">
-                        <span class="text-8xl font-black text-white/5 group-hover:text-blue-600 transition duration-500">03</span>
-                    </div>
-                    <div class="md:w-1/2">
-                        <h4 class="text-2xl font-bold uppercase mb-4">Adaptive Construction</h4>
-                        <p class="text-gray-400 text-sm leading-relaxed">Our project managers utilize real-time tracking to ensure builds are completed on schedule, under budget, and beyond code.</p>
+                    <div class="group relative overflow-hidden bg-gray-900 aspect-[3/4] reveal">
+                        <div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110 industrial-img"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent p-8 flex flex-col justify-end">
+                            <h4 class="text-2xl font-bold font-heading">Logistics Hub X</h4>
+                            <p class="text-blue-500 text-xs font-bold uppercase tracking-widest">Industrial Construction</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer id="contact" class="pt-32 pb-12 px-6 bg-[#05070a] border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-20">
-            <div class="col-span-2">
-                <h3 class="text-4xl font-black uppercase mb-8">Ready to Build<br>with Byltmore?</h3>
-                <p class="text-gray-500 max-w-sm mb-8 italic">Currently accepting proposals for Q3 2026. Reach out to our development team for a consultation.</p>
-                <a href="mailto:office@byltmore.com" class="text-2xl font-bold text-blue-500 underline underline-offset-8 decoration-1 hover:text-white transition">office@byltmore.com</a>
-            </div>
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Operations</h4>
-                <ul class="space-y-4 text-sm text-gray-500">
-                    <li>Project Management</li>
-                    <li>Site Acquisition</li>
-                    <li>General Contracting</li>
-                    <li>Consulting</li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">HQ</h4>
-                <p class="text-sm text-gray-500 leading-relaxed">
-                    Financial District, Suite 400<br>
-                    New York, NY 10005<br>
-                    +1 (555) BYLTMORE
-                </p>
+    <section id="process" class="py-32 bg-white text-black">
+        <div class="max-w-7xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row justify-between border-b border-black/10 pb-20 mb-20">
+                <h3 class="text-6xl font-black font-heading uppercase">01. Intent<br>02. Design<br>03. Bylt.</h3>
+                <div class="max-w-sm mt-10 md:mt-0">
+                    <p class="text-gray-600 font-medium">Byltmore's proprietary management system reduces lead times by 22% compared to industry averages.</p>
+                </div>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between pt-12 border-t border-white/5 text-[10px] uppercase tracking-widest font-bold text-gray-600">
-            <div>© 2026 BYLTMORE Development & Construction</div>
-            <div class="mt-4 md:mt-0">Lic. #1029384756 • Built by Byltmore Digital</div>
+    </section>
+
+    <footer class="bg-[#05070a] py-20 px-8 border-t border-white/5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-[10px] font-bold tracking-[0.4em] text-gray-600 uppercase">
+            <div>BYLTMORE &copy; 2026</div>
+            <div>Byltmore.com</div>
         </div>
     </footer>
 
+    <script>
+        // Reveal on Scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
 </body>
 </html>
-
